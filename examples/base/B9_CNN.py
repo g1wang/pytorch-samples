@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 # torch.manual_seed(1)    # reproducible
 
 # Hyper Parameters
-EPOCH = 1               # train the training data n times, to save time, we just train 1 epoch
+EPOCH = 5               # train the training data n times, to save time, we just train 1 epoch
 BATCH_SIZE = 50
 LR = 0.001              # learning rate
 DOWNLOAD_MNIST = False
@@ -32,7 +32,7 @@ if not(os.path.exists('./mnist/')) or not os.listdir('./mnist/'):
     DOWNLOAD_MNIST = True
 
 train_data = torchvision.datasets.MNIST(
-    root='./mnist/',
+    root='D:/all-dataset/mnist/',
     train=True,                                     # this is training data
     transform=torchvision.transforms.ToTensor(),    # Converts a PIL.Image or numpy.ndarray to
                                                     # torch.FloatTensor of shape (C x H x W) and normalize in the range [0.0, 1.0]
@@ -50,7 +50,7 @@ plt.show()
 train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 
 # pick 2000 samples to speed up testing
-test_data = torchvision.datasets.MNIST(root='./mnist/', train=False)
+test_data = torchvision.datasets.MNIST(root='D:/all-dataset/mnist/', train=False)
 test_x = torch.unsqueeze(test_data.test_data, dim=1).type(torch.FloatTensor)[:2000]/255.   # shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)
 test_y = test_data.test_labels[:2000]
 
@@ -84,7 +84,7 @@ class CNN(nn.Module):
         return output, x    # return x for visualization
 
 
-cnn = CNN()
+cnn = CNN().cuda()
 print(cnn)  # net architecture
 
 optimizer = torch.optim.Adam(cnn.parameters(), lr=LR)   # optimize all cnn parameters
@@ -105,7 +105,7 @@ plt.ion()
 # training and testing
 for epoch in range(EPOCH):
     for step, (b_x, b_y) in enumerate(train_loader):   # gives batch data, normalize x when iterate train_loader
-
+        b_x, b_y = b_x.cuda(), b_y.cuda()
         output = cnn(b_x)[0]               # cnn output
         loss = loss_func(output, b_y)   # cross entropy loss
         optimizer.zero_grad()           # clear gradients for this training step
@@ -113,10 +113,10 @@ for epoch in range(EPOCH):
         optimizer.step()                # apply gradients
 
         if step % 50 == 0:
-            test_output, last_layer = cnn(test_x)
-            pred_y = torch.max(test_output, 1)[1].data.numpy()
+            test_output, last_layer = cnn(test_x.cuda())
+            pred_y = torch.max(test_output, 1)[1].data.cpu().numpy()
             accuracy = float((pred_y == test_y.data.numpy()).astype(int).sum()) / float(test_y.size(0))
-            print('Epoch: ', epoch, '| train loss: %.4f' % loss.data.numpy(), '| test accuracy: %.2f' % accuracy)
+            print('Epoch: ', epoch, '| train loss: %.4f' % loss.cpu().data.numpy(), '| test accuracy: %.5f' % accuracy)
             #if HAS_SK:
                 # Visualization of trained flatten layer (T-SNE)
            #     tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000)
@@ -127,7 +127,7 @@ for epoch in range(EPOCH):
 plt.ioff()
 
 # print 10 predictions from test data
-test_output, _ = cnn(test_x[:10])
+test_output, _ = cnn(test_x.cuda()[:100])
 pred_y = torch.max(test_output, 1)[1].data.numpy()
 print(pred_y, 'prediction number')
-print(test_y[:10].numpy(), 'real number')
+print(test_y[:100].numpy(), 'real number')
