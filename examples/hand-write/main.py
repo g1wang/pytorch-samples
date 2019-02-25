@@ -2,6 +2,7 @@ import torch
 import torchvision
 import os
 import matplotlib.pyplot as plt
+import torchvision.models as models
 
 from torchvision import datasets, transforms
 import torch.utils.data as Data
@@ -11,7 +12,9 @@ DOWNLOAD_MNIST = False
 if not (os.path.exists('.D:/all-dataset/mnist/')) or not os.listdir('D:/all-dataset/mnist/'):
     # not mnist dir or mnist is empyt dir
     DOWNLOAD_MNIST = True
-transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])])
+# transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])])
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                                                            std=[0.229, 0.224, 0.225])])
 data_train = datasets.MNIST(root='D:/all-dataset/mnist/',
                             transform=transform,
                             train=True,
@@ -73,6 +76,7 @@ class Model(torch.nn.Module):
 # torch.cuda.set_device(0)
 model = Model()
 model = torch.nn.DataParallel(model)
+
 # 损失函数
 loss_fun = torch.nn.CrossEntropyLoss()
 # 优化函数
