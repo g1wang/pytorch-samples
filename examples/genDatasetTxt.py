@@ -4,19 +4,29 @@ from PIL import Image
 
 class_0_dir = ''
 class_1_dir = ''
-# class_0_dir = 'E:\\porn-pure\\train\\normal'
-# class_1_dir = 'E:\\porn-pure\\train\\porn'
-# filepath = './porn-pure-train.txt'
+# class_0_dir = 'F:\\porn-pure\\train\\normal'
+# class_1_dir = 'F:\\porn-pure\\train\\porn'
+# filepath = './porn-train.txt'
 
-# class_0_dir = 'E:\\porn-pure\\validation\\normal'
-# filepath = './normal-pure-validation.txt'
+# class_0_dir = 'F:\\porn-pure\\validation\\normal'
+# filepath = './normal-validation.txt'
 
-class_1_dir = 'E:\\porn-pure\\validation\\porn'
-filepath = './porn-pure-validation.txt'
+class_1_dir = 'F:\\porn-pure\\validation\\porn'
+filepath = './porn-validation.txt'
 
-# class_0_dir = 'D:\\all-dataset\\porn-data\\validation\\normal'
-# class_1_dir = 'D:\\all-dataset\\porn-data\\validation\\porn'
-# filepath = './porn-pure-validation.txt'
+# class_0_dir = 'F:\\porn-pure\\test\\normal'
+# filepath = './normal-test.txt'
+
+# class_1_dir = 'F:\\porn-pure\\test\\porn'
+# filepath = './porn-test.txt'
+
+# class_1_dir = 'F:\\porn-pure\\train\\porn'
+# filepath = './porn-train-porn.txt'
+
+# class_0_dir = 'F:\\porn-pure\\train\\normal'
+# filepath = './porn-train-normal.txt'
+
+
 
 lines = []
 if class_0_dir != '':
