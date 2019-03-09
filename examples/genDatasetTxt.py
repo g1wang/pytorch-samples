@@ -11,8 +11,8 @@ class_1_dir = ''
 # class_0_dir = 'F:\\porn-pure\\validation\\normal'
 # filepath = './normal-validation.txt'
 
-class_1_dir = 'F:\\porn-pure\\validation\\porn'
-filepath = './porn-validation.txt'
+# class_1_dir = 'F:\\porn-pure\\validation\\porn'
+# filepath = './porn-validation.txt'
 
 # class_0_dir = 'F:\\porn-pure\\test\\normal'
 # filepath = './normal-test.txt'
@@ -26,6 +26,12 @@ filepath = './porn-validation.txt'
 # class_0_dir = 'F:\\porn-pure\\train\\normal'
 # filepath = './porn-train-normal.txt'
 
+
+class_0_dir = 'D:\\porn\\PTSQ\\PT1108-allpic\\Allpic\\normal'
+filepath = './porn-train-normal.txt'
+
+# class_1_dir = 'D:\\porn\\YOUTU_RESULT\\80000\\porn85分以下'
+# filepath = './porn-test-porn.txt'
 
 
 lines = []
