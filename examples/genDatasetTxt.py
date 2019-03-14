@@ -4,34 +4,31 @@ from PIL import Image
 
 class_0_dir = ''
 class_1_dir = ''
-# class_0_dir = 'F:\\porn-pure\\train\\normal'
-# class_1_dir = 'F:\\porn-pure\\train\\porn'
+# class_0_dir = 'D:\dataset\\porn-pure\\train\\normal'
+# class_1_dir = 'D:\dataset\\porn-pure\\train\\porn'
 # filepath = './porn-train.txt'
 
-# class_0_dir = 'F:\\porn-pure\\validation\\normal'
+# class_0_dir = 'D:\dataset\\porn-pure\\validation\\normal'
 # filepath = './normal-validation.txt'
 
-# class_1_dir = 'F:\\porn-pure\\validation\\porn'
+# class_1_dir = 'D:\dataset\\porn-pure\\validation\\porn'
 # filepath = './porn-validation.txt'
 
-# class_0_dir = 'F:\\porn-pure\\test\\normal'
+# class_0_dir = 'D:\dataset\\porn-pure\\test\\normal'
 # filepath = './normal-test.txt'
 
-# class_1_dir = 'F:\\porn-pure\\test\\porn'
+# class_1_dir = 'D:\dataset\\porn-pure\\test\\porn'
 # filepath = './porn-test.txt'
 
-# class_1_dir = 'F:\\porn-pure\\train\\porn'
+# class_1_dir = 'D:\dataset\\porn-pure\\train\\porn'
 # filepath = './porn-train-porn.txt'
 
-# class_0_dir = 'F:\\porn-pure\\train\\normal'
+# class_0_dir = 'D:\\dataset\\porn-pure\\train\\normal'
 # filepath = './porn-train-normal.txt'
 
+class_1_dir = 'D:\\dataset\\downSamples-part1'
+filepath = './porn-test.txt'
 
-class_0_dir = 'D:\\porn\\PTSQ\\PT1108-allpic\\Allpic\\normal'
-filepath = './porn-train-normal.txt'
-
-# class_1_dir = 'D:\\porn\\YOUTU_RESULT\\80000\\porn85分以下'
-# filepath = './porn-test-porn.txt'
 
 
 lines = []
